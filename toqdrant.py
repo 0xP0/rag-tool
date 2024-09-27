@@ -48,7 +48,7 @@ def createVectorDB(DBName, size=384, distance="Cosine"):
 
 
 def createEmbeddings(DBName, model_name, size, filepath):
-    command = f"wasmedge --dir .:. --nn-preload default:GGML:AUTO:{model_name} create_embeddings.wasm default {DBName} {size} {filepath} "
+    command = f"wasmedge --dir .:. --nn-preload default:GGML:AUTO:{model_name} paragraph_embed.wasm default {DBName} {size} {filepath} -c 8192"
     print(command)
     os.system(command)
 
